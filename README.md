@@ -2,9 +2,7 @@
 
 A high-performance, responsive EdTech landing page engineered with Next.js, TypeScript, and Tailwind CSS v4.
 
-![alt text](public/preview-image.png)
-
-(Note: Replace preview-image.png with a screenshot of your finished Hero section)
+![preview-image](public/preview-image.png)
 
 🚀 Overview
 
