@@ -12,7 +12,7 @@ export default function AboutHero() {
           src="/about/about-hero.png" // Make sure this exists
           alt="BrightHat Team"
           fill
-          className="object-cover object-top"
+          className="object-cover object-top w-lg h-full"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-cream/20" />
