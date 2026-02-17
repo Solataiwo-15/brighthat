@@ -20,7 +20,7 @@ export default function AboutHero() {
 
       {/* 2. THE OVERLAPPING BLUE CARD */}
       <Container>
-        <div className="relative z-10 -mt-30 lg:-mt-50 w-full bg-brand-blue rounded-[40px] p-8 lg:p-16 text-white shadow-2xl">
+        <div className="relative z-10 -mt-10 lg:-mt-14 w-full bg-brand-blue rounded-[40px] p-8 lg:p-16 text-white shadow-2xl">
           {/* Header inside the card */}
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl font-bold">About BrightHAT</h1>
