@@ -9,17 +9,19 @@ export default function AboutHero() {
       <div className="w-full relative h-[400px] lg:h-[500px]">
         {/* Background Image */}
         <Image
-          src="/about/about-hero.png"
+          src="/about/about-hero.png" // Make sure this exists
           alt="BrightHat Team"
           fill
           className="object-cover object-top"
           priority
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-cream/20" />
       </div>
 
       {/* 2. THE OVERLAPPING BLUE CARD */}
       <Container>
-        <div className="lg:-mt-32 w-full bg-brand-blue rounded-[40px] p-8 lg:p-16 text-white shadow-2xl">
+        <div className="relative z-10 -mt-24 lg:-mt-32 w-full bg-brand-blue rounded-[40px] p-8 lg:p-16 text-white shadow-2xl">
+          {/* Header inside the card */}
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl font-bold">About BrightHAT</h1>
           </div>
