@@ -21,12 +21,12 @@ export default function Navbar() {
               alt="BrightHat Logo"
               width={120}
               height={30}
-              className="h-7 w-auto object-contain"
+              className="h-6 md:h-7 w-auto object-contain"
               priority
             />
           </Link>
 
-          <div className="hidden md:flex flex-1 items-center justify-center gap-8">
+          <div className="hidden xl:flex flex-1 items-center justify-center gap-8">
             <div className="flex items-center gap-8">
               {NAV_LINKS.map((link) => (
                 <Link
@@ -47,12 +47,12 @@ export default function Navbar() {
             </a>
           </div>
 
-          <div className="hidden md:flex flex-shrink-0">
+          <div className="hidden xl:flex flex-shrink-0">
             <Button variant="outline">Login/Sign up</Button>
           </div>
 
           <button
-            className="md:hidden text-brand-blue p-2"
+            className="xl:hidden text-brand-blue p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -60,7 +60,7 @@ export default function Navbar() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 w-full bg-brand-cream border-b border-gray-100 shadow-xl py-4 flex flex-col items-center gap-4 animate-in slide-in-from-top-5">
+          <div className="xl:hidden absolute top-20 left-0 w-full h-screen bg-brand-cream border-t border-gray-100 shadow-xl py-8 flex flex-col items-center gap-6 animate-in slide-in-from-top-5 z-50">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}

@@ -161,3 +161,26 @@ export const PRICING_PLANS = [
     isPopular: false,
   },
 ];
+
+export const ABOUT_VALUES = [
+  {
+    title: "Our Mission",
+    description: "To create an avenue to help people fulfill their learning needs from anywhere at anytime.",
+    icon: "/about/icon-mission.svg",
+  },
+  {
+    title: "Our Vision",
+    description: "Our vision is to be globally recognized as an enabler of borderless outcome-focused learning.",
+    icon: "/about/icon-vision.svg",
+  },
+  {
+    title: "Our People",
+    description: "Our team is made up of seasoned educators and technologists who are passionate about using technology.",
+    icon: "/about/icon-people.svg",
+  },
+  {
+    title: "Our Story",
+    description: "The engagement was conceived during a conversation between the founders. At the time, they were looking to help kids learn.",
+    icon: "/about/icon-story.svg",
+  },
+];
