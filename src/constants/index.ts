@@ -1,9 +1,48 @@
+// Existing NAV_LINKS will be replaced with this:
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Tutoring", href: "/tutoring" },
-  { label: "Languages", href: "/languages" },
-  { label: "For Schools", href: "/schools" },
-  { label: "About", href: "/about" },
+  { 
+    label: "Tutoring", 
+    href: "/tutoring", // Main link for the dropdown
+    dropdown: [ // Sub-links for the dropdown
+      { label: "1-to-1 Tutoring", href: "/tutoring/one-on-one" },
+      { label: "Homework Support", href: "/tutoring/homework" },
+      { label: "Exam Prep", href: "/tutoring/exam-prep" },
+      { label: "Summer School", href: "/tutoring/summer-school" },
+      { label: "Become a Tutor", href: "/tutoring/become-a-tutor" },
+    ]
+  },
+  { 
+    label: "Languages", 
+    href: "/languages", 
+    dropdown: [
+      { label: "Yoruba", href: "/languages/yoruba" },
+      { label: "French", href: "/languages/french" },
+    ]
+  },
+  { 
+    label: "For Schools", 
+    href: "/schools", 
+    dropdown: [
+      { label: "SchoolConnect", href: "/schools/school-connect" },
+      { label: "Free Resources", href: "/schools/resources" },
+      { label: "High School Math", href: "/schools/math" },
+      { label: "High School Physics", href: "/schools/physics" },
+      { label: "High School Biology", href: "/schools/biology" },
+      { label: "High School Chemistry", href: "/schools/chemistry" },
+    ]
+  },
+  { 
+    label: "About", 
+    href: "/about", 
+    dropdown: [
+      { label: "About BrightHAT", href: "/about" }, // Link to the main about page
+      { label: "Testimonials", href: "/about#testimonials" }, // Anchor link
+      { label: "Careers", href: "/about/careers" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "FAQs", href: "/faqs" },
+    ]
+  },
 ];
 
 export const CONTACT_INFO = {
@@ -31,6 +70,36 @@ export const FEATURES = [
 
 export const PRODUCTS = [
   {
+    title: "SchoolConnect",
+    description: "Through our SchoolConnect program, BrightHAT partners with public schools to deliver curriculum-based contents to equitably improve outcomes for students.",
+    image: "/products/school-connect.png",
+  },
+  {
+    title: "Languages",
+    description: "Join the growing list of individuals who are learning to communicate in at least one other language. Learn to hold a conversation in that second language!",
+    image: "/products/languages.png",
+  },
+  {
+    title: "Test Prep",
+    description: "Our platform provides access to a wide range of study resources, including practice exams, study guides, and video lessons. We are your trusted test partner!",
+    image: "/products/test-prep.png",
+  },
+   {
+    title: "SchoolConnect",
+    description: "Through our SchoolConnect program, BrightHAT partners with public schools to deliver curriculum-based contents to equitably improve outcomes for students.",
+    image: "/products/school-connect.png",
+  },
+  {
+    title: "Languages",
+    description: "Join the growing list of individuals who are learning to communicate in at least one other language. Learn to hold a conversation in that second language!",
+    image: "/products/languages.png",
+  },
+  {
+    title: "Test Prep",
+    description: "Our platform provides access to a wide range of study resources, including practice exams, study guides, and video lessons. We are your trusted test partner!",
+    image: "/products/test-prep.png",
+  },
+   {
     title: "SchoolConnect",
     description: "Through our SchoolConnect program, BrightHAT partners with public schools to deliver curriculum-based contents to equitably improve outcomes for students.",
     image: "/products/school-connect.png",
@@ -182,5 +251,28 @@ export const ABOUT_VALUES = [
     title: "Our Story",
     description: "The engagement was conceived during a conversation between the founders. At the time, they were looking to help kids learn.",
     icon: "/about/icon-story.svg",
+  },
+];
+
+export const LEADERSHIP_TEAM = [
+  {
+    name: "ADEWALE ADEYEMO",
+    role: "Cofounder",
+    image: "/about/leader-1.png",
+  },
+  {
+    name: "MOBOLAJI MOYO",
+    role: "Cofounder",
+    image: "/about/leader-2.png",
+  },
+  {
+    name: "TEMITOPE AJAGBE",
+    role: "Head of Technology",
+    image: "/about/leader-3.png",
+  },
+  {
+    name: "OLUWAKEMI M. ADEWOYE",
+    role: "Director",
+    image: "/about/leader-4.png",
   },
 ];

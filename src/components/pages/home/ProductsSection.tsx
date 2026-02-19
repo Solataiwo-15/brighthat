@@ -1,96 +1,135 @@
 "use client";
 
-import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+
 import Image from "next/image";
-import { Triangle } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { PRODUCTS } from "@/constants";
+import { Triangle } from "lucide-react";
 
 export default function ProductsSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = 400;
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <section className="w-full py-16 lg:py-20 bg-brand-white">
+    <section className="relative w-full py-16 lg:py-20 bg-brand-white overflow-hidden">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold text-brand-black mb-4 lg:mb-6">
             Our Products
           </h2>
-          {/* FIX 2: Slightly smaller text on mobile */}
           <p className="text-brand-black text-sm md:text-[16px] max-w-[700px] leading-relaxed mx-auto">
             Everyday, we take a step towards achieving our vision by helping
             people fulfill their learning needs from anywhere at anytime. Below
             are some of the ways by which we make that happen.
           </p>
         </div>
+      </Container>
 
-        <div className="relative group">
-          {/* LEFT ARROW (Desktop only) */}
-          <button
-            onClick={() => scroll("left")}
-            className="hidden lg:block absolute top-1/2 -left-16 -translate-y-1/2 z-10 text-brand-orange hover:scale-110 transition-transform cursor-pointer"
-          >
-            <Triangle size={40} fill="currentColor" className="-rotate-90" />
-          </button>
-
-          {/* SCROLL CONTAINER */}
-          <div
-            ref={scrollRef}
-            // FIX 3: Reduced gap on mobile (gap-4) to keep cards closer
-            className="flex gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory pb-10 px-4 -mx-4 scrollbar-none"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      <div className="relative group">
+        <Container className="px-0">
+          <Swiper
+            modules={[Navigation, Pagination, A11y, Autoplay]}
+            spaceBetween={16}
+            breakpoints={{
+              0: {
+                slidesPerView: 1.1,
+                spaceBetween: 16,
+                centeredSlides: false,
+                slidesOffsetBefore: 16,
+                slidesOffsetAfter: 16,
+              },
+              768: {
+                slidesPerView: 2.2,
+                spaceBetween: 24,
+                centeredSlides: false,
+                slidesOffsetBefore: 0,
+                slidesOffsetAfter: 0,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 32,
+                centeredSlides: false,
+                slidesOffsetBefore: 0,
+                slidesOffsetAfter: 0,
+              },
+            }}
+            pagination={{
+              clickable: true,
+              el: ".swiper-pagination-products",
+              type: "bullets",
+            }}
+            navigation={{
+              nextEl: ".swiper-button-next-products",
+              prevEl: ".swiper-button-prev-products",
+              disabledClass: "opacity-30 cursor-not-allowed",
+            }}
+            loop={false}
+            grabCursor={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            className="mySwiper !pb-10 min-h-[300px] px-4 -mx-4 lg:px-0 lg:-mx-0"
           >
             {PRODUCTS.map((product, index) => (
-              <div
-                key={index}
-                className="min-w-[280px] md:min-w-[350px] lg:min-w-[380px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 snap-center flex flex-col overflow-hidden border border-gray-100/50"
-              >
-                <div className="relative w-full h-48 md:h-56">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              <SwiperSlide key={index} className="!h-auto">
+                {" "}
+                {/* Added !h-auto to allow stretching */}
+                {/*
+                    FIX: Changed from 'flex flex-col' to 'grid' to solve uneven height issue
+                  */}
+                <div className="swiper-slide-content bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 grid grid-rows-[auto_1fr_auto] overflow-hidden border border-gray-100/50 h-full">
+                  {/* Part 1: Image */}
+                  <div className="relative w-full h-48 md:h-56">
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                    />
+                  </div>
 
-                <div className="p-6 md:p-8 flex flex-col flex-grow">
-                  <h3 className="text-2xl md:text-[28px] font-bold text-brand-blue mb-4">
-                    {product.title}
-                  </h3>
-                  <p className="text-brand-black text-sm md:text-[16px] leading-relaxed mb-8 flex-grow">
-                    {product.description}
-                  </p>
+                  {/* Part 2: Text (The middle section that needs to grow) */}
+                  <div className="p-6 md:p-8 flex flex-col">
+                    {" "}
+                    {/* Removed flex-grow from inner text */}
+                    <h3 className="text-2xl md:text-[28px] font-bold text-brand-blue mb-4">
+                      {product.title}
+                    </h3>
+                    <p className="text-brand-black text-sm md:text-[16px] leading-relaxed">
+                      {product.description}
+                    </p>
+                  </div>
 
-                  <div>
+                  {/* Part 3: Button (Always at the bottom) */}
+                  <div className="p-6 md:p-8 pt-0">
+                    {" "}
+                    {/* Separate padding for button */}
                     <button className="px-[16px] py-[10px] rounded-md bg-brand-blue/10 text-brand-light-blue font-semibold text-sm hover:bg-brand-blue/20 transition-colors cursor-pointer">
                       Read more
                     </button>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
 
-          {/* RIGHT ARROW (Desktop only) */}
-          <button
-            onClick={() => scroll("right")}
-            className="hidden lg:block absolute top-1/2 -right-16 -translate-y-1/2 z-10 text-brand-orange hover:scale-110 transition-transform cursor-pointer"
-          >
-            <Triangle size={40} fill="currentColor" className="rotate-90" />
-          </button>
+            <div className="swiper-pagination-products !relative !bottom-0 !mt-6" />
+          </Swiper>
+        </Container>
+
+        {/* Custom Navigation Arrows */}
+        <div className="swiper-button-prev-products hidden lg:block absolute top-1/2 left-77 -translate-y-1/2 -translate-x-1/2 z-10 text-brand-orange hover:scale-110 transition-transform cursor-pointer">
+          <Triangle size={40} fill="currentColor" className="-rotate-90" />
         </div>
-      </Container>
+        <div className="swiper-button-next-products hidden lg:block absolute top-1/2 right-77 -translate-y-1/2 translate-x-1/2 z-10 text-brand-orange hover:scale-110 transition-transform cursor-pointer">
+          <Triangle size={40} fill="currentColor" className="rotate-90" />
+        </div>
+      </div>
     </section>
   );
 }

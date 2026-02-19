@@ -18,7 +18,7 @@ export default function TutorsSection() {
           {TUTORS.map((tutor, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center group"
+              className="flex flex-col items-center text-center group cursor-pointer"
             >
               {/* AVATAR CONTAINER */}
               <div className="relative w-48 h-64 mb-4 flex justify-center items-end">

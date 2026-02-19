@@ -1,37 +1,49 @@
+import React from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { ABOUT_VALUES } from "@/constants";
 
 export default function AboutHero() {
   return (
-    <section className="w-full bg-brand-cream pb-20">
-      {/* 1. THE HERO IMAGE AREA */}
-      <div className="w-full relative h-[400px] lg:h-[500px]">
-        {/* Background Image */}
-        <Image
-          src="/about/about-hero.png" // Make sure this exists
-          alt="BrightHat Team"
-          fill
-          className="object-cover object-top w-[350px] h-full"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-cream/20" />
+    <section className="w-full bg-brand-cream pb-0">
+      {" "}
+      {/* Removed bottom padding to let it flow */}
+      {/* 1. THE HERO IMAGE (People + Orange Circle) */}
+      <div className="w-full flex justify-center pt-0 lg:pt-5">
+        {/* 
+            - w-[70%]: Requested width.
+            - h-[350px] to h-[550px]: Height to show heads/torsos.
+            - relative z-0: Sits behind the card.
+        */}
+        <div className="relative w-[90%] lg:w-[70%] h-[350px] lg:h-[600px] z-0">
+          <Image
+            src="/about/about-hero.png"
+            alt="BrightHat Team"
+            fill
+            className="object-contain object-bottom" // Aligns people to the bottom so card covers waists
+            priority
+            quality={100}
+          />
+        </div>
       </div>
-
       {/* 2. THE OVERLAPPING BLUE CARD */}
       <Container>
-        <div className="relative z-10 -mt-10 lg:-mt-14 w-full bg-brand-blue rounded-[40px] p-8 lg:p-16 text-white shadow-2xl">
-          {/* Header inside the card */}
+        {/* 
+           -mt-32 lg:-mt-48: Pulls the card UP significantly to cover the waists.
+           relative z-10: Sits ON TOP of the image.
+        */}
+        <div className="relative z-10 -mt-24 lg:-mt-40 w-full bg-brand-blue rounded-t-[40px] lg:rounded-t-[60px] p-8 lg:p-16 text-white shadow-2xl">
+          {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold">About BrightHAT</h1>
+            <h1 className="text-3xl md:text-5xl font-bold">About BrightHAT</h1>
           </div>
 
           {/* Grid of 4 Values */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
             {ABOUT_VALUES.map((item, index) => (
-              <div key={index} className="flex flex-col items-start">
+              <div key={index} className="flex flex-col items-start group">
                 {/* Icon */}
-                <div className="mb-6 relative w-16 h-16">
+                <div className="mb-6 relative w-12 h-12 lg:w-16 lg:h-16">
                   <Image
                     src={item.icon}
                     alt={item.title}
@@ -41,10 +53,12 @@ export default function AboutHero() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3">
+                  {item.title}
+                </h3>
 
                 {/* Description */}
-                <p className="text-sm text-gray-200 leading-relaxed opacity-90">
+                <p className="text-sm lg:text-base text-gray-200 leading-relaxed opacity-90">
                   {item.description}
                 </p>
               </div>

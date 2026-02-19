@@ -28,3 +28,75 @@ html, body {
 input, textarea, button, select {
   font-family: inherit;
 }
+
+/* Custom Swiper Styles */
+
+/* Navigation Arrows (Prev/Next) */
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--color-brand-orange) !important; /* Makes arrows orange */
+  width: 40px !important; /* Adjust size */
+  height: 40px !important; /* Adjust size */
+  transition: transform 0.2s ease-in-out;
+  display: flex !important; /* Ensure they are visible by default, then hide with media query */
+  justify-content: center;
+  align-items: center;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Specific positioning for desktop arrows */
+@media (min-width: 1024px) { /* Corresponds to Tailwind's 'lg' breakpoint */
+  .swiper-button-prev {
+    left: -1px !important; /* Adjust as needed */
+  }
+  .swiper-button-next {
+    right: -1px !important; /* Adjust as needed */
+  }
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 24px !important; /* Adjust icon size */
+  font-weight: bold;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  transform: translateY(-50%) scale(1.1); /* Hover effect */
+}
+
+/* Hide navigation arrows on touch devices (mobile and tablet) */
+@media (max-width: 1023px) { /* Corresponds to Tailwind's 'lg' breakpoint inverse */
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}
+
+
+/* Pagination Dots */
+.swiper-pagination-products .swiper-pagination-bullet {
+  background-color: var(--color-brand-blue) !important; /* Blue inactive dot */
+  opacity: 0.3 !important;
+  transition: all 0.3s ease;
+  width: 8px !important; /* Default round size */
+  height: 8px !important; /* Default round size */
+  margin: 0 4px !important; /* Spacing between dots */
+}
+
+.swiper-pagination-products .swiper-pagination-bullet-active {
+  background-color: var(--color-brand-orange) !important; /* Orange active dot */
+  opacity: 1 !important;
+  width: 16px !important; /* Make active dot slightly longer (pill shape) */
+  border-radius: 9999px !important; /* Ensure pill shape */
+}
+
+/* Ensure pagination is centered */
+.swiper-pagination-products {
+  text-align: center !important;
+  margin-top: 24px !important; /* Adjust spacing from slides */
+}
