@@ -69,16 +69,11 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      // Keep text orange on hover OR if active
                       className={`relative text-sm font-semibold transition-colors py-2 flex items-center gap-1
                         ${isActiveLink ? "text-brand-orange" : "text-brand-gray hover:text-brand-orange"}
                       `}
                     >
                       {link.label}
-                      {/* 
-                         FIX: Underline now ONLY shows if isActiveLink is true.
-                         Removed 'group-hover:scale-x-100'.
-                      */}
                       <span
                         className={`absolute bottom-0 left-0 w-full h-[2px] bg-brand-orange transition-transform duration-200 origin-left
                         ${isActiveLink ? "scale-x-100" : "scale-x-0"}

@@ -33,7 +33,7 @@ export default function ValuePropSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 lg:mb-24 pt-12 lg:pt-20">
           {/* LEFT: Students Image */}
           <div className="relative flex justify-center">
-            <div className="relative w-[70%] sm:w-[60%] lg:w-full max-w-[500px] aspect-[4/5] lg:aspect-square mx-auto">
+            <div className="relative w-[70%] sm:w-[60%] lg:w-full max-w-[500px] aspect-4/5 lg:aspect-square mx-auto">
               <Image
                 src="/students-group.png"
                 alt="Group of students"
